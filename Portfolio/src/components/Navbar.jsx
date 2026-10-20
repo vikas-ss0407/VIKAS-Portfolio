@@ -1,38 +1,61 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import logo from "../assets/v logo.png";
 
 function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const navLinks = [
-    { label: "About", href: "#about" },
-    { label: "Skills", href: "#skills" },
-    { label: "Projects", href: "#projects" },
-    { label: "Experience", href: "#experience" },
-    { label: "Patents", href: "#patents" },
-    { label: "Certificates", href: "#certificates" },
-    { label: "Education", href: "#education" },
-    { label: "Contact", href: "#contact" }
+    { label: "About", id: "about" },
+    { label: "Skills", id: "skills" },
+    { label: "Projects", id: "projects" },
+    { label: "Experience", id: "experience" },
+    { label: "Patents", id: "patents" },
+    { label: "Certificates", id: "certificates" },
+    { label: "Education", id: "education" },
+    { label: "Contact", id: "contact" }
   ];
+
+  const scrollToSection = (e, id) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const scrollToTop = (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <nav className="fixed top-0 left-0 w-full z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
-      <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-        {/* Brand */}
-        <a href="#" className="text-xl font-bold text-white hover:text-emerald-400 transition-colors">
-          Vikas S S
+      <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-3.5">
+        {/* Brand with Logo */}
+        <a 
+          href="/" 
+          onClick={scrollToTop} 
+          className="flex items-center gap-3 text-xl font-bold text-white hover:text-emerald-400 transition-colors group"
+        >
+          <img 
+            src={logo} 
+            alt="Logo" 
+            className="w-8 h-8 rounded-lg object-contain group-hover:scale-105 transition-transform" 
+          />
+          <span>Vikas S S</span>
         </a>
 
-        {/* Desktop Links */}
+        {/* Desktop Links (smooth scroll without # in URL) */}
         <div className="hidden md:flex items-center gap-7">
           {navLinks.map((item) => (
-            <a
+            <button
               key={item.label}
-              href={item.href}
-              className="text-slate-300 hover:text-emerald-400 text-sm font-medium transition-colors"
+              onClick={(e) => scrollToSection(e, item.id)}
+              className="text-slate-300 hover:text-emerald-400 text-sm font-medium transition-colors cursor-pointer"
             >
               {item.label}
-            </a>
+            </button>
           ))}
         </div>
 
@@ -62,14 +85,16 @@ function Navbar() {
       {mobileOpen && (
         <div className="md:hidden bg-slate-900 border-b border-slate-800 px-6 py-4 space-y-3">
           {navLinks.map((item) => (
-            <a
+            <button
               key={item.label}
-              href={item.href}
-              onClick={() => setMobileOpen(false)}
-              className="block text-slate-300 hover:text-emerald-400 text-sm font-medium py-1 transition-colors"
+              onClick={(e) => {
+                setMobileOpen(false);
+                scrollToSection(e, item.id);
+              }}
+              className="block w-full text-left text-slate-300 hover:text-emerald-400 text-sm font-medium py-1 transition-colors"
             >
               {item.label}
-            </a>
+            </button>
           ))}
           <div className="pt-2">
             <a

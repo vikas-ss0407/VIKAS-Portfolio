@@ -2,6 +2,14 @@ import profile from "../assets/profile/profile.png";
 import { GithubIcon, LinkedinIcon } from "./SocialIcons";
 
 function Hero() {
+  const scrollToContact = (e) => {
+    e.preventDefault();
+    const contactEl = document.getElementById("contact");
+    if (contactEl) {
+      contactEl.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="min-h-[85vh] flex items-center justify-center px-6 pt-24 pb-12">
       <div className="max-w-6xl mx-auto w-full">
@@ -31,12 +39,12 @@ function Hero() {
                 View Resume
               </a>
 
-              <a
-                href="#contact"
-                className="border border-slate-700 hover:border-slate-500 bg-slate-900/60 hover:bg-slate-800 text-slate-200 px-6 py-3 rounded-lg text-sm font-medium transition-colors"
+              <button
+                onClick={scrollToContact}
+                className="border border-slate-700 hover:border-slate-500 bg-slate-900/60 hover:bg-slate-800 text-slate-200 px-6 py-3 rounded-lg text-sm font-medium transition-colors cursor-pointer"
               >
                 Contact Me
-              </a>
+              </button>
 
               <div className="flex items-center gap-2 pl-1">
                 <a
