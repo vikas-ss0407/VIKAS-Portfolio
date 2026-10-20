@@ -1,55 +1,87 @@
 import { useState } from "react";
+import { Menu, X } from "lucide-react";
 
 function Navbar() {
-  const [open, setOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-  const links = [
-    "About",
-    "Skills",
-    "Projects",
-    "Education",
-    "Certificates",
+  const navLinks = [
+    { label: "About", href: "#about" },
+    { label: "Skills", href: "#skills" },
+    { label: "Projects", href: "#projects" },
+    { label: "Experience", href: "#experience" },
+    { label: "Patents", href: "#patents" },
+    { label: "Certificates", href: "#certificates" },
+    { label: "Education", href: "#education" },
+    { label: "Contact", href: "#contact" }
   ];
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-slate-950/40 backdrop-blur-xl border-b border-slate-800/60 transition-all duration-300">
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
-        <h1 className="text-2xl font-bold text-emerald-400 tracking-tight drop-shadow-[0_0_15px_rgba(52,211,153,0.3)]">
-          Vikas
-        </h1>
+    <nav className="fixed top-0 left-0 w-full z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
+      <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+        {/* Brand */}
+        <a href="#" className="text-xl font-bold text-white hover:text-emerald-400 transition-colors">
+          Vikas S S
+        </a>
 
-        <div className="hidden md:flex gap-8">
-          {links.map((item) => (
+        {/* Desktop Links */}
+        <div className="hidden md:flex items-center gap-7">
+          {navLinks.map((item) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="text-slate-300 hover:text-emerald-400 transition-colors duration-200 text-sm font-medium relative py-1 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-emerald-400 after:transition-all hover:after:w-full"
+              key={item.label}
+              href={item.href}
+              className="text-slate-300 hover:text-emerald-400 text-sm font-medium transition-colors"
             >
-              {item}
+              {item.label}
             </a>
           ))}
         </div>
 
+        {/* Resume Button */}
+        <div className="hidden sm:block">
+          <a
+            href="https://drive.google.com/drive/folders/1tvV92MWocOro8Z5jKdBkIZmVRwvIef_A?usp=sharing"
+            target="_blank"
+            rel="noreferrer"
+            className="px-4 py-2 rounded-lg text-sm font-semibold bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition-colors shadow-sm"
+          >
+            Resume
+          </a>
+        </div>
+
+        {/* Mobile menu button */}
         <button
-          className="md:hidden text-slate-200 p-1 hover:text-emerald-400 transition-colors"
-          onClick={() => setOpen(!open)}
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="md:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800"
+          aria-label="Toggle Menu"
         >
-          <span className="text-2xl">{open ? "✕" : "☰"}</span>
+          {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
-      {open && (
-        <div className="md:hidden flex flex-col px-6 pb-6 gap-4 bg-slate-950/90 backdrop-blur-2xl border-b border-slate-800/80 animate-fadeIn">
-          {links.map((item) => (
+      {/* Mobile Drawer */}
+      {mobileOpen && (
+        <div className="md:hidden bg-slate-900 border-b border-slate-800 px-6 py-4 space-y-3">
+          {navLinks.map((item) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="text-slate-300 hover:text-emerald-400 font-medium transition-colors"
-              onClick={() => setOpen(false)}
+              key={item.label}
+              href={item.href}
+              onClick={() => setMobileOpen(false)}
+              className="block text-slate-300 hover:text-emerald-400 text-sm font-medium py-1 transition-colors"
             >
-              {item}
+              {item.label}
             </a>
           ))}
+          <div className="pt-2">
+            <a
+              href="https://drive.google.com/drive/folders/1tvV92MWocOro8Z5jKdBkIZmVRwvIef_A?usp=sharing"
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setMobileOpen(false)}
+              className="block w-full text-center py-2.5 rounded-lg text-sm font-semibold bg-emerald-500 text-slate-950"
+            >
+              Resume
+            </a>
+          </div>
         </div>
       )}
     </nav>

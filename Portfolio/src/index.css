@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #f1f5f9;
+    background-color: #020617;
+  }
+}
+
 @layer utilities {
   .dynamic-delay-1 {
     animation-delay: 2s;
@@ -11,11 +19,63 @@
   }
 }
 
+/* Custom clean scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #10b981;
+}
+
+/* CORE INTERACTIVE ANIMATIONS ENGINE */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-4px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes globalSpinClockwise {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes globalSpinCounter {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes globalPulse {
+  0%, 100% { opacity: 0.04; transform: scale(1); }
+  50% { opacity: 0.08; transform: scale(1.03); }
+}
+
+/* INTERFACE UTILITY ATTACHMENTS */
 .animate-fadeIn {
   animation: fadeIn 0.2s ease-out forwards;
+}
+
+.animate-radar-spin {
+  animation: globalSpinClockwise 16s linear infinite;
+}
+
+.animate-slow-spin {
+  animation: globalSpinClockwise 140s linear infinite;
+}
+
+.animate-slow-reverse {
+  animation: globalSpinCounter 90s linear infinite;
+}
+
+.animate-box-pulse {
+  animation: globalPulse 7s ease-in-out infinite;
 }

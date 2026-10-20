@@ -1,58 +1,79 @@
-import profile from "../assets/profile/profile.jpg";
+import profile from "../assets/profile/profile.png";
+import { GithubIcon, LinkedinIcon } from "./SocialIcons";
 
 function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 pt-16">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center w-full">
+    <section className="min-h-[85vh] flex items-center justify-center px-6 pt-24 pb-12">
+      <div className="max-w-6xl mx-auto w-full">
+        <div className="grid md:grid-cols-12 gap-10 items-center">
+          
+          {/* Left Column: Text & Actions */}
+          <div className="md:col-span-7 space-y-6">
+            <p className="text-emerald-400 font-semibold text-base tracking-wide">
+              Full Stack Developer | DevOps Engineer
+            </p>
 
-        <div className="space-y-6">
-          <p className="text-emerald-400 font-semibold tracking-wider uppercase text-sm drop-shadow-[0_0_10px_rgba(52,211,153,0.2)]">
-            Full Stack Developer
-          </p>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
+              Hi, I'm <span className="text-emerald-400">Vikas S S</span>
+            </h1>
 
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400">
-            Hi, I'm Vikas
-          </h1>
+            <p className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-xl">
+              Turning ideas into working applications and streamlining the journey from development to deployment.
+            </p>
 
-          <p className="text-slate-300 leading-relaxed text-lg max-w-xl">
-            Motivated Full Stack Developer passionate
-            about building scalable web applications
-            using MERN Stack, Cloud Technologies,
-            and IoT Integration.
-          </p>
+            <div className="flex flex-wrap items-center gap-4 pt-2">
+              <a
+                href="https://drive.google.com/drive/folders/1tvV92MWocOro8Z5jKdBkIZmVRwvIef_A?usp=sharing"
+                target="_blank"
+                rel="noreferrer"
+                className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold px-6 py-3 rounded-lg text-sm transition-colors shadow-sm"
+              >
+                View Resume
+              </a>
 
-          <div className="flex gap-4 pt-4 flex-wrap">
-            <a
-              href="https://drive.google.com/drive/folders/1LpuTCFxE9I5w0PNlwnrciKQVH3N3jSLQ"
-              target="_blank"
-              rel="noreferrer"
-              className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-8 py-3.5 rounded-xl font-bold shadow-[0_4px_20px_rgba(16,185,129,0.4)] hover:shadow-[0_4px_25px_rgba(16,185,129,0.6)] transition-all duration-300 hover:-translate-y-0.5"
-            >
-              Resume
-            </a>
+              <a
+                href="#contact"
+                className="border border-slate-700 hover:border-slate-500 bg-slate-900/60 hover:bg-slate-800 text-slate-200 px-6 py-3 rounded-lg text-sm font-medium transition-colors"
+              >
+                Contact Me
+              </a>
 
-            <a
-              href="https://github.com/vikas-ss0407"
-              target="_blank"
-              rel="noreferrer"
-              className="border-2 border-slate-700 hover:border-emerald-500 px-8 py-3.5 rounded-xl font-medium text-slate-300 hover:text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5"
-            >
-              GitHub
-            </a>
+              <div className="flex items-center gap-2 pl-1">
+                <a
+                  href="https://github.com/vikas-ss0407"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="p-3 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700 transition-colors"
+                  aria-label="GitHub"
+                >
+                  <GithubIcon className="w-5 h-5" />
+                </a>
+
+                <a
+                  href="https://www.linkedin.com/in/vikasss0407/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="p-3 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700 transition-colors"
+                  aria-label="LinkedIn"
+                >
+                  <LinkedinIcon className="w-5 h-5" />
+                </a>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div className="flex justify-center md:justify-end">
-          <div className="relative group">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-500 opacity-40 blur-2xl group-hover:opacity-60 transition duration-500" />
-            <img
-              src={profile}
-              alt="profile"
-              className="relative w-72 h-72 md:w-80 md:h-80 rounded-full object-cover border-4 border-slate-800/80 shadow-2xl group-hover:border-emerald-400/80 transition-all duration-500 object-center"
-            />
+          {/* Right Column: Profile Photo */}
+          <div className="md:col-span-5 flex justify-center md:justify-end items-center">
+            <div className="relative">
+              <img
+                src={profile}
+                alt="Vikas S S"
+                className="w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full object-cover object-top border-4 border-slate-800 shadow-2xl"
+              />
+            </div>
           </div>
-        </div>
 
+        </div>
       </div>
     </section>
   );

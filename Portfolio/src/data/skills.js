@@ -1,36 +1,77 @@
 const skills = {
-  programming: ["Java", "JavaScript", "C", "C++"],
+  devops: {
+    title: "DevOps & CI/CD",
+    items: [
+      "Jenkins",
+      "Docker",
+      "Kubernetes",
+      "NGINX",
+      "GitHub Webhooks",
+      "Ingress",
+      "CI/CD Pipelines",
+      "Prometheus",
+      "Grafana"
+    ]
+  },
 
-  frontend: [
-    "React.js",
-    "Tailwind CSS",
-    "HTML",
-    "CSS"
-  ],
+  cloud: {
+    title: "Cloud & Infrastructure",
+    items: [
+      "AWS (EC2, S3, IAM, VPC)",
+      "Amazon EKS",
+      "Amazon ECR",
+      "Terraform",
+      "Minikube",
+      "Render"
+    ]
+  },
 
-  backend: [
-    "Node.js",
-    "Express.js",
-    "MongoDB",
-    "MySQL",
-    "JWT Authentication"
-  ],
+  fullstack: {
+    title: "Web Development",
+    items: [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "Tailwind CSS",
+      "REST APIs",
+      "JWT Authentication",
+      "HTML5",
+      "CSS3"
+    ]
+  },
 
-  cloud: [
-    "AWS Cloud",
-    "Firebase",
-    "Cloud Computing"
-  ],
+  languages: {
+    title: "Programming Languages",
+    items: [
+      "Java",
+      "JavaScript",
+      "Python"
+    ]
+  },
 
-  tools: [
-    "Git",
-    "GitHub",
-    "Postman",
-    "VS Code",
-    "IntelliJ IDEA",
-    "Vercel",
-    "Render"
-  ]
+  databases: {
+    title: "Databases & Tools",
+    items: [
+      "MongoDB",
+      "MySQL",
+      "Firebase",
+      "Git",
+      "GitHub",
+      "Postman",
+      "VS Code"
+    ]
+  },
+
+  core: {
+    title: "Core Concepts",
+    items: [
+      "Linux",
+      "Computer Networks (CCNA)",
+      "Data Structures & Algorithms",
+      "Object-Oriented Programming",
+      "DBMS"
+    ]
+  }
 };
 
 export default skills;

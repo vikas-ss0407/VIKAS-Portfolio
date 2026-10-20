@@ -1,29 +1,49 @@
 import certificates from "../data/certificates";
+import { ExternalLink } from "lucide-react";
 
 function Certificates() {
   return (
-    <section id="certificates" className="py-24 px-6">
+    <section id="certificates" className="py-20 px-6 border-t border-slate-900">
       <div className="max-w-6xl mx-auto">
-
-        <h2 className="text-4xl font-extrabold text-center mb-16 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">
-          Certifications
+        <h2 className="text-3xl font-bold text-center mb-12 text-white tracking-tight">
+          Certificates
         </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-          {certificates.map((certificate, index) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {certificates.map((cert, index) => (
             <div
               key={index}
-              className="bg-slate-900/30 backdrop-blur-sm rounded-2xl p-6 border border-slate-800/80 hover:border-emerald-500/50 shadow-md hover:shadow-[0_0_20px_rgba(16,185,129,0.1)] transition-all duration-300 flex items-center group"
+              className="bg-slate-900/60 rounded-xl p-5 border border-slate-800 flex flex-col justify-between"
             >
-              <h3 className="font-medium leading-relaxed text-slate-300 group-hover:text-slate-100 transition-colors text-base">
-                {certificate}
-              </h3>
+              <div>
+                <div className="flex items-center justify-between text-xs text-slate-400 mb-2">
+                  <span className="text-emerald-400 font-medium">
+                    {cert.issuer}
+                  </span>
+                  <span>{cert.year}</span>
+                </div>
+
+                <h3 className="font-semibold text-white text-base leading-snug">
+                  {cert.title}
+                </h3>
+              </div>
+
+              {cert.credentialUrl && (
+                <div className="pt-4 mt-3 border-t border-slate-800 flex justify-end">
+                  <a
+                    href={cert.credentialUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1 text-xs text-emerald-400 hover:text-emerald-300 font-medium"
+                  >
+                    <span>View Certificate</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              )}
             </div>
           ))}
-
         </div>
-
       </div>
     </section>
   );
